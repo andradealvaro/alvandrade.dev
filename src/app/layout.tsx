@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${personal.name} — ${personal.title}`,
+  title: `alv.dev — ${personal.name}`,
   description: personal.summary,
 };
 
