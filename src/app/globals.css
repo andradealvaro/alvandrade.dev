@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Our theme is driven by a JS-controlled [data-theme] attribute, not the OS
+   color-scheme preference — so Tailwind's `dark:` utilities must key off
+   that attribute instead of their default `prefers-color-scheme` strategy. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   /* Dark is the default look — system color-scheme is intentionally ignored. */
   --bg: #0a0f1d;

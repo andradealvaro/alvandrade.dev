@@ -37,18 +37,18 @@ export function Education() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
-            className="rounded-xl border border-slate-800 bg-slate-900/60 p-5"
+            className="rounded-xl border border-slate-200 bg-slate-100/80 p-5 text-slate-900 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-100"
           >
-            <h3 className="font-mono text-xs uppercase tracking-widest text-slate-400">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">
               Idiomas
             </h3>
             <ul className="mt-4 space-y-2.5">
               {languages.map((lang) => (
                 <li key={lang.name} className="flex items-center justify-between">
-                  <span className="font-mono text-xs uppercase text-slate-300">
+                  <span className="font-mono text-xs uppercase text-slate-700 dark:text-slate-300">
                     {lang.name}
                   </span>
-                  <span className="rounded bg-emerald-500/10 px-2 py-1 font-mono text-xs text-emerald-400">
+                  <span className="rounded border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 font-mono text-xs text-emerald-700 dark:text-emerald-400">
                     {lang.level.toUpperCase()}
                   </span>
                 </li>

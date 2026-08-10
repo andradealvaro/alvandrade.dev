@@ -18,15 +18,15 @@ export function Header() {
   const activeId = useActiveSection(NAV_IDS);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800/50 bg-[#0a0f1d]/75 backdrop-blur-md transition-all">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md transition-all dark:border-slate-800 dark:bg-slate-950/80">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
         <a href="#top" className="[perspective:600px]">
           <motion.span
             whileHover={{ rotateY: 360 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="inline-block font-display text-sm font-semibold text-slate-100"
+            className="inline-block font-display text-sm font-semibold text-slate-900 dark:text-slate-100"
           >
-            alv<span className="text-emerald-400">.dev</span>
+            alv<span className="text-emerald-500 dark:text-emerald-400">.dev</span>
           </motion.span>
         </a>
 
@@ -39,8 +39,8 @@ export function Header() {
                 href={link.href}
                 className={`font-mono text-xs uppercase tracking-wider transition-colors ${
                   isActive
-                    ? "border-b-2 border-emerald-400 pb-1 text-emerald-400"
-                    : "text-slate-400 hover:text-slate-100"
+                    ? "border-b-2 border-emerald-500 pb-1 text-emerald-600 dark:border-emerald-400 dark:text-emerald-400"
+                    : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
                 }`}
               >
                 {link.label}
