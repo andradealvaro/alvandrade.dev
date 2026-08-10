@@ -53,28 +53,26 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="rounded-sm border border-neutral-200 bg-white p-8 text-black lg:col-span-5"
+            className="rounded-sm border border-neutral-200 bg-white p-10 text-black lg:col-span-5"
           >
             <div className="flex items-center justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
                 {">_"}
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
                 DOC_RESUME_01
               </span>
             </div>
 
-            <h3 className="mt-3 text-2xl font-bold text-black">
-              Currículo Oficial
-            </h3>
-            <p className="mb-6 mt-2 text-sm leading-relaxed text-neutral-600">
+            <h3 className="mt-4 text-3xl font-bold text-black">Currículo</h3>
+            <p className="mb-8 mt-3 text-base leading-relaxed text-neutral-600">
               Versão em PDF otimizada para ATS e leitura rápida, cobrindo
               experiências, projetos e formação acadêmica.
             </p>
 
             <DownloadPdfButton variant="invert" />
 
-            <div className="mt-4 rounded-none border border-[#e5e5e5] bg-[#f4f4f4] p-4 font-mono text-xs text-neutral-800">
+            <div className="mt-5 rounded-none border border-[#e5e5e5] bg-[#f4f4f4] p-4 font-mono text-xs text-neutral-800">
               $ curl -s https://alv.dev/api/contact
             </div>
           </motion.div>

@@ -14,7 +14,7 @@ const VARIANT_CLASS: Record<NonNullable<DownloadPdfButtonProps["variant"]>, stri
   ghost:
     "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-70 border border-slate-300 text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800",
   invert:
-    "flex w-full cursor-pointer items-center justify-center gap-2 rounded-none border border-black bg-transparent px-4 py-3.5 font-mono text-xs font-semibold uppercase tracking-wider text-black transition-colors hover:bg-black hover:text-white disabled:opacity-70",
+    "flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-none border border-black bg-transparent px-4 py-4 font-mono text-xs font-semibold uppercase tracking-wider text-black transition-colors hover:bg-black hover:text-white disabled:opacity-70",
 };
 
 export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProps) {
