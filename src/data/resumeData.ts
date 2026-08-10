@@ -85,20 +85,27 @@ export const personal: PersonalInfo = {
 
 export const skills: SkillCategory[] = [
   {
-    category: "Linguagens",
+    category: "Languages",
     items: ["TypeScript", "JavaScript", "Python", "SQL"],
   },
   {
-    category: "Frameworks e bibliotecas",
-    items: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    category: "Frontend",
+    items: ["Next.js", "React", "Tailwind CSS"],
   },
   {
-    category: "Dados e infraestrutura",
-    items: ["PostgreSQL", "Supabase", "Git", "Vercel"],
+    category: "Backend & DB",
+    items: ["Node.js", "PostgreSQL", "Supabase", "REST APIs"],
   },
   {
-    category: "Suporte técnico e ferramentas",
-    items: ["Diagnóstico de hardware", "Redes e AD", "Office 365", "Excel avançado"],
+    category: "Tools & Infra",
+    items: [
+      "Git",
+      "Vercel",
+      "Active Directory",
+      "Office 365",
+      "Diagnóstico de hardware",
+      "Excel avançado",
+    ],
   },
 ];
 

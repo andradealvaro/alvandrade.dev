@@ -5,7 +5,7 @@ import { ArrowRight, Download, Loader2 } from "lucide-react";
 import { personal } from "@/data/resumeData";
 
 interface DownloadPdfButtonProps {
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "invert";
 }
 
 export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProps) {
@@ -16,7 +16,9 @@ export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProp
   const variantClass =
     variant === "primary"
       ? "bg-accent text-accent-fg hover:opacity-90"
-      : "border border-border text-fg hover:border-accent";
+      : variant === "invert"
+        ? "w-full justify-center rounded-xl bg-slate-900 py-3 font-mono text-xs font-bold uppercase tracking-wider text-slate-100 hover:bg-emerald-600"
+        : "border border-border text-fg hover:border-accent";
 
   async function handleDownload() {
     setLoading(true);
@@ -51,6 +53,11 @@ export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProp
         <>
           <Loader2 size={15} className="animate-spin" />
           Gerando PDF
+        </>
+      ) : variant === "invert" ? (
+        <>
+          <Download size={15} />
+          Baixar currículo (PDF) ↗
         </>
       ) : (
         <>
