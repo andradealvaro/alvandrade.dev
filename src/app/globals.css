@@ -52,24 +52,14 @@ body {
 }
 
 .bg-canvas-dots {
-  /* Dark styling by default, matching the default theme. */
+  /* Dark styling by default, matching the default theme. Scoped to the top
+     of the page (Hero/Sobre/Experiência) and faded out by its own bottom
+     edge so Projetos onward sits on a clean solid background. */
   background-image: radial-gradient(#475569 1.4px, transparent 1.4px);
   background-size: 26px 26px;
   opacity: 0.4;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 6%,
-    #000 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 6%,
-    #000 92%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
 }
 
 :root[data-theme="light"] .bg-canvas-dots {

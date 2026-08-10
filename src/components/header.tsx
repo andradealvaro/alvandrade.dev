@@ -18,15 +18,15 @@ export function Header() {
   const activeId = useActiveSection(NAV_IDS);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-800/50 bg-[#0a0f1d]/75 backdrop-blur-md transition-all">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
         <a href="#top" className="[perspective:600px]">
           <motion.span
             whileHover={{ rotateY: 360 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="inline-block font-display text-sm font-semibold text-fg"
+            className="inline-block font-display text-sm font-semibold text-slate-100"
           >
-            alv<span className="text-accent">.dev</span>
+            alv<span className="text-emerald-400">.dev</span>
           </motion.span>
         </a>
 

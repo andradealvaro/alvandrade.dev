@@ -14,9 +14,15 @@ export default function Home() {
       <Header />
       <SocialSidebar />
       <main>
-        <Hero />
-        <About />
-        <Experience />
+        <div className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 bg-canvas-dots"
+          />
+          <Hero />
+          <About />
+          <Experience />
+        </div>
         <Projects />
         <Skills />
         <Education />

@@ -45,7 +45,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="relative min-h-full flex flex-col bg-bg text-fg font-body">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-canvas-dots" />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
