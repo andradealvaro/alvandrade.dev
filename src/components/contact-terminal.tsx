@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Check, Copy, Mail } from "lucide-react";
 import { personal } from "@/data/resumeData";
 
-const COMMAND = "curl -s https://curriculo-alvaro.vercel.app/contact";
+const COMMAND = "curl -s https://alvandradedev.vercel.app/contact";
 
 export function ContactTerminal() {
   const [copied, setCopied] = useState(false);
