@@ -134,11 +134,6 @@ export const education: Education[] = [
     degree: "Bacharelado em Engenharia da Computação",
     period: "em andamento — 5º período",
   },
-  {
-    institution: "Instituto Federal Celso Suckow da Fonseca",
-    degree: "Licenciatura em Física",
-    period: "trancado — 4º período cursado",
-  },
 ];
 
 export const projects: Project[] = [

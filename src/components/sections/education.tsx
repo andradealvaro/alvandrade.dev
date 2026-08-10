@@ -10,7 +10,7 @@ export function Education() {
       <div className="mx-auto max-w-4xl px-6 py-24">
         <SectionHeading eyebrow="Formação" title="Formação acadêmica" />
 
-        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-[1fr_260px]">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-[1fr_260px]">
           <div className="space-y-6">
             {education.map((item, index) => (
               <motion.div
@@ -32,22 +32,29 @@ export function Education() {
             ))}
           </div>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
+            className="rounded-xl border border-slate-800 bg-slate-900/60 p-5"
+          >
+            <h3 className="font-mono text-xs uppercase tracking-widest text-slate-400">
               Idiomas
             </h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-4 space-y-2.5">
               {languages.map((lang) => (
-                <li
-                  key={lang.name}
-                  className="flex items-center justify-between text-sm"
-                >
-                  <span className="text-fg">{lang.name}</span>
-                  <span className="text-fg-muted">{lang.level}</span>
+                <li key={lang.name} className="flex items-center justify-between">
+                  <span className="font-mono text-xs uppercase text-slate-300">
+                    {lang.name}
+                  </span>
+                  <span className="rounded bg-emerald-500/10 px-2 py-1 font-mono text-xs text-emerald-400">
+                    {lang.level.toUpperCase()}
+                  </span>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
