@@ -8,17 +8,17 @@ interface DownloadPdfButtonProps {
   variant?: "primary" | "ghost" | "invert";
 }
 
+const VARIANT_CLASS: Record<NonNullable<DownloadPdfButtonProps["variant"]>, string> = {
+  primary:
+    "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-70 bg-accent text-accent-fg hover:opacity-90",
+  ghost:
+    "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-70 border border-border text-fg hover:border-accent",
+  invert:
+    "flex w-full cursor-pointer items-center justify-center gap-2 rounded-none border border-black bg-transparent px-4 py-3.5 font-mono text-xs font-semibold uppercase tracking-wider text-black transition-colors hover:bg-black hover:text-white disabled:opacity-70",
+};
+
 export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProps) {
   const [loading, setLoading] = useState(false);
-
-  const baseClass =
-    "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-70";
-  const variantClass =
-    variant === "primary"
-      ? "bg-accent text-accent-fg hover:opacity-90"
-      : variant === "invert"
-        ? "w-full justify-center rounded-xl bg-slate-900 py-3 font-mono text-xs font-bold uppercase tracking-wider text-slate-100 hover:bg-emerald-600"
-        : "border border-border text-fg hover:border-accent";
 
   async function handleDownload() {
     setLoading(true);
@@ -47,7 +47,7 @@ export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProp
       type="button"
       onClick={handleDownload}
       disabled={loading}
-      className={`${baseClass} ${variantClass}`}
+      className={VARIANT_CLASS[variant]}
     >
       {loading ? (
         <>

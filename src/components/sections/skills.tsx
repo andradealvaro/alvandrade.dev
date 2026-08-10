@@ -33,12 +33,14 @@ export function Skills() {
                     delay: index * 0.06,
                     ease: "easeOut",
                   }}
-                  className={`flex flex-col justify-between gap-1.5 py-4 sm:flex-row sm:items-center ${
+                  className={`flex items-center justify-between gap-4 py-5 ${
                     index !== 0 ? "border-t border-border" : ""
                   }`}
                 >
-                  <p className="font-bold text-fg">{group.category}</p>
-                  <p className="font-mono text-xs uppercase text-fg-muted">
+                  <p className="min-w-[160px] shrink-0 text-base font-bold text-fg">
+                    {group.category}
+                  </p>
+                  <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">
                     {group.items.join(", ")}
                   </p>
                 </motion.div>
@@ -51,24 +53,28 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative rounded-2xl border border-slate-200 bg-slate-100 p-6 text-slate-900 shadow-2xl lg:col-span-5"
+            className="rounded-sm border border-neutral-200 bg-white p-8 text-black lg:col-span-5"
           >
-            <p className="font-mono text-xs text-slate-500">
-              {">_"} DOC_RESUME_A4
-            </p>
-            <h3 className="mt-3 font-display text-lg font-bold text-slate-900">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+                {">_"}
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+                DOC_RESUME_01
+              </span>
+            </div>
+
+            <h3 className="mt-3 text-2xl font-bold text-black">
               Currículo Oficial
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <p className="mb-6 mt-2 text-sm leading-relaxed text-neutral-600">
               Versão em PDF otimizada para ATS e leitura rápida, cobrindo
               experiências, projetos e formação acadêmica.
             </p>
 
-            <div className="mt-5">
-              <DownloadPdfButton variant="invert" />
-            </div>
+            <DownloadPdfButton variant="invert" />
 
-            <div className="mt-3 rounded-lg border border-slate-300 bg-slate-200/80 p-3 font-mono text-xs text-slate-800">
+            <div className="mt-4 rounded-none border border-[#e5e5e5] bg-[#f4f4f4] p-4 font-mono text-xs text-neutral-800">
               $ curl -s https://alv.dev/api/contact
             </div>
           </motion.div>
