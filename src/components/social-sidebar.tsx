@@ -17,8 +17,8 @@ const LINKS: { href: string; Icon: IconComponent; label: string }[] = [
 
 export function SocialSidebar() {
   return (
-    <div className="fixed inset-y-0 left-0 z-30 hidden w-16 flex-col items-center justify-between border-r border-slate-800/60 bg-slate-950/40 py-8 backdrop-blur-md xl:flex">
-      <div className="flex flex-col items-center gap-6">
+    <div className="fixed inset-y-0 left-0 z-30 hidden w-16 flex-col items-center border-r border-slate-800/60 bg-slate-950/40 py-8 backdrop-blur-md xl:flex">
+      <div className="flex flex-1 flex-col items-center justify-center gap-6">
         {LINKS.map(({ href, Icon, label }) => (
           <a
             key={label}
