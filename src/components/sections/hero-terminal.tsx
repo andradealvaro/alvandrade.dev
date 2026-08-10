@@ -29,7 +29,7 @@ export function HeroTerminal() {
         </div>
 
         <p className="pt-1 text-fg-muted">
-          <span className="text-accent">{">_"}</span> Full-Stack Engineer ·
+          <span className="text-accent">{">_"}</span> Full-Stack Developer ·
           CompEng
         </p>
       </div>
