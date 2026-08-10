@@ -8,9 +8,10 @@ import { HeroTerminal } from "./hero-terminal";
 import { useTypewriter } from "../use-typewriter";
 
 const ROLES = [
-  ">_ Engenheiro de Computação",
-  ">_ Desenvolvedor Full-Stack",
-  ">_ Criador de SaaS",
+  ">_ Engenharia de Computação",
+  ">_ Tecnologia da Informação",
+  ">_ Full-Stack Developer",
+  ">_ :)",
 ];
 
 export function Hero() {
