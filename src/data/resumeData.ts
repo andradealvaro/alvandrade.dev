@@ -120,11 +120,6 @@ export const education: Education[] = [
     degree: "Licenciatura em Física",
     period: "trancado — 4º período cursado",
   },
-  {
-    institution: "Instituto Social Anísio Santos",
-    degree: "Ensino Médio",
-    period: "concluído — 2020",
-  },
 ];
 
 export const projects: Project[] = [
