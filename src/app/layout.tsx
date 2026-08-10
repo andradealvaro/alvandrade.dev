@@ -34,6 +34,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          // Runs before paint so a saved "light" preference never flashes dark first.
+          // Dark is the default and needs no script — it's already the base CSS.
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('resume-theme')==='light'){document.documentElement.setAttribute('data-theme','light')}}catch(e){}",
+          }}
+        />
+      </head>
       <body className="relative min-h-full flex flex-col bg-bg text-fg font-body">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-canvas-dots" />
         <ThemeProvider>{children}</ThemeProvider>

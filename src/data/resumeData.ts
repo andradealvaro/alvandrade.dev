@@ -1,3 +1,8 @@
+export interface HeroPoint {
+  label: string;
+  text: string;
+}
+
 export interface PersonalInfo {
   name: string;
   title: string;
@@ -7,6 +12,8 @@ export interface PersonalInfo {
   github: string;
   linkedin: string;
   summary: string;
+  heroIntro: string;
+  heroPoints: HeroPoint[];
 }
 
 export interface SkillCategory {
@@ -62,6 +69,18 @@ export const personal: PersonalInfo = {
   linkedin: "",
   summary:
     "Estudante de Engenharia da Computação com atuação em desenvolvimento full-stack (Next.js, React, TypeScript, PostgreSQL) e suporte técnico corporativo. Projetei e implementei dois sistemas web em produção para a Solidum Construtora: uma plataforma de gestão documental com extração automatizada via IA e um SaaS de pesquisa de satisfação com dashboards analíticos, ambos com banco de dados relacional, autenticação, permissões granulares e deploy contínuo.",
+  heroIntro:
+    "Estudante de Engenharia da Computação focado no desenvolvimento de software full-stack e arquitetura de sistemas corporativos.",
+  heroPoints: [
+    {
+      label: "Sistemas em Produção",
+      text: "Desenvolvedor de plataformas web escaláveis com autenticação, permissões granulares e deploy contínuo.",
+    },
+    {
+      label: "Pipelines & IA",
+      text: "Experiência na criação de módulos com extração automatizada de dados via IA e dashboards analíticos.",
+    },
+  ],
 };
 
 export const skills: SkillCategory[] = [

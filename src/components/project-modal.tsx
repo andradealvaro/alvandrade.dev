@@ -62,7 +62,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               </button>
             </div>
 
-            <div className="max-h-[70vh] overflow-y-auto px-6 py-5">
+            <div className="custom-scrollbar max-h-[70vh] overflow-y-auto px-6 py-5">
               <h3 className="font-display text-xl font-semibold text-fg">
                 {project?.name}
               </h3>

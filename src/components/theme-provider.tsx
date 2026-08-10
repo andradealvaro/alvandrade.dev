@@ -20,11 +20,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
-    const resolved = stored ?? preferred;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from browser-only storage/media APIs that aren't available during SSR
+    // Dark is the default unless the user has explicitly saved "light" before —
+    // system color-scheme preference is intentionally ignored here.
+    const resolved = stored === "light" ? "light" : "dark";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from browser-only storage that isn't available during SSR
     setTheme(resolved);
     document.documentElement.setAttribute("data-theme", resolved);
   }, []);

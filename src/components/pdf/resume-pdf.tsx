@@ -18,57 +18,57 @@ const ON_ACCENT_MUTED = "#c8f5e2";
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
-    fontSize: 8.8,
+    fontSize: 8.3,
     color: INK,
-    lineHeight: 1.35,
+    lineHeight: 1.3,
   },
   headerBand: {
     backgroundColor: ACCENT,
-    paddingHorizontal: 38,
-    paddingTop: 28,
-    paddingBottom: 22,
+    paddingHorizontal: 34,
+    paddingTop: 20,
+    paddingBottom: 15,
   },
   name: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 20,
+    fontSize: 17,
     lineHeight: 1.1,
     color: ON_ACCENT,
   },
   title: {
-    fontSize: 9.8,
+    fontSize: 9,
     color: ON_ACCENT_MUTED,
-    marginTop: 9,
+    marginTop: 6,
   },
   contactLine: {
-    marginTop: 9,
-    fontSize: 8,
+    marginTop: 6,
+    fontSize: 7.6,
     color: ON_ACCENT_MUTED,
   },
   body: {
-    paddingHorizontal: 38,
-    paddingTop: 22,
-    paddingBottom: 30,
+    paddingHorizontal: 34,
+    paddingTop: 14,
+    paddingBottom: 18,
   },
   sectionTitlePill: {
     alignSelf: "flex-start",
     backgroundColor: ACCENT_SOFT,
     borderRadius: 3,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    marginBottom: 8,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    marginBottom: 6,
   },
   sectionTitleText: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 7.6,
+    fontSize: 7,
     color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 1,
   },
   section: {
-    marginBottom: 15,
+    marginBottom: 9,
   },
   paragraph: {
-    fontSize: 8.8,
+    fontSize: 8.3,
     color: INK,
   },
   itemHeaderRow: {
@@ -78,72 +78,79 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 9.5,
+    fontSize: 9,
     color: INK,
   },
   itemSubtitle: {
-    fontSize: 8.4,
+    fontSize: 8,
     color: MUTED,
     marginTop: 1,
   },
   itemMeta: {
     fontFamily: "Courier",
-    fontSize: 7.8,
+    fontSize: 7.3,
     color: MUTED,
   },
   bulletRow: {
     flexDirection: "row",
-    marginTop: 3,
+    marginTop: 2,
     paddingLeft: 2,
   },
   bulletMark: {
     width: 8,
-    fontSize: 8.4,
+    fontSize: 8,
     color: ACCENT,
   },
   bulletText: {
     flex: 1,
-    fontSize: 8.4,
+    fontSize: 8,
     color: INK,
   },
   projectParagraph: {
-    fontSize: 8.4,
+    fontSize: 8,
     color: INK,
-    marginTop: 4,
+    marginTop: 3,
   },
   entry: {
-    marginBottom: 10,
+    marginBottom: 7,
     borderLeftWidth: 2,
     borderLeftColor: ACCENT_SOFT,
-    paddingLeft: 10,
+    paddingLeft: 8,
   },
   stackLine: {
-    fontSize: 7.4,
+    fontSize: 7,
     fontFamily: "Courier-Bold",
     color: ACCENT,
-    marginTop: 5,
+    marginTop: 4,
+  },
+  footerColumns: {
+    flexDirection: "row",
+  },
+  footerColumn: {
+    flex: 1,
+    paddingRight: 16,
   },
   skillRow: {
-    marginBottom: 6,
+    marginBottom: 4,
   },
   skillCategory: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 8,
+    fontSize: 7.6,
     color: INK,
   },
   skillItems: {
     fontFamily: "Courier",
-    fontSize: 8,
+    fontSize: 7.4,
     color: MUTED,
     marginTop: 1,
   },
   educationRow: {
-    marginBottom: 7,
+    marginBottom: 5,
   },
   languageRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    fontSize: 8.2,
+    fontSize: 7.6,
     marginBottom: 2,
   },
 });
@@ -217,35 +224,43 @@ export function ResumePDF() {
             ))}
           </View>
 
-          <View style={styles.section}>
-            <SectionTitle>Formação</SectionTitle>
-            {education.map((item) => (
-              <View key={item.institution} style={styles.educationRow}>
-                <Text style={styles.itemTitle}>{item.degree}</Text>
-                <Text style={styles.itemSubtitle}>{item.institution}</Text>
-                <Text style={styles.itemMeta}>{item.period}</Text>
+          <View style={styles.footerColumns}>
+            <View style={styles.footerColumn}>
+              <View style={styles.section}>
+                <SectionTitle>Formação</SectionTitle>
+                {education.map((item) => (
+                  <View key={item.institution} style={styles.educationRow}>
+                    <Text style={styles.itemTitle}>{item.degree}</Text>
+                    <Text style={styles.itemSubtitle}>{item.institution}</Text>
+                    <Text style={styles.itemMeta}>{item.period}</Text>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
 
-          <View style={styles.section}>
-            <SectionTitle>Idiomas</SectionTitle>
-            {languages.map((lang) => (
-              <View key={lang.name} style={styles.languageRow}>
-                <Text style={{ color: INK }}>{lang.name}</Text>
-                <Text style={{ color: MUTED }}>{lang.level}</Text>
+              <View style={styles.section}>
+                <SectionTitle>Idiomas</SectionTitle>
+                {languages.map((lang) => (
+                  <View key={lang.name} style={styles.languageRow}>
+                    <Text style={{ color: INK }}>{lang.name}</Text>
+                    <Text style={{ color: MUTED }}>{lang.level}</Text>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
+            </View>
 
-          <View style={styles.section}>
-            <SectionTitle>Habilidades técnicas</SectionTitle>
-            {skills.map((group) => (
-              <View key={group.category} style={styles.skillRow}>
-                <Text style={styles.skillCategory}>{group.category}</Text>
-                <Text style={styles.skillItems}>{group.items.join(" · ")}</Text>
+            <View style={styles.footerColumn}>
+              <View style={styles.section}>
+                <SectionTitle>Habilidades técnicas</SectionTitle>
+                {skills.map((group) => (
+                  <View key={group.category} style={styles.skillRow}>
+                    <Text style={styles.skillCategory}>{group.category}</Text>
+                    <Text style={styles.skillItems}>
+                      {group.items.join(" · ")}
+                    </Text>
+                  </View>
+                ))}
               </View>
-            ))}
+            </View>
           </View>
         </View>
       </Page>

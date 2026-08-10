@@ -4,15 +4,8 @@ import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { personal } from "@/data/resumeData";
 import { DownloadPdfButton } from "../download-pdf-button";
-import { HighlightedText } from "./highlighted-text";
 import { HeroTerminal } from "./hero-terminal";
 import { useTypewriter } from "../use-typewriter";
-
-const HIGHLIGHTS = [
-  "Engenharia da Computação",
-  "desenvolvimento full-stack",
-  "extração automatizada via IA",
-];
 
 const ROLES = [
   ">_ Engenheiro de Computação",
@@ -56,8 +49,25 @@ export function Hero() {
             transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
             className="mt-6 max-w-md text-base leading-relaxed text-fg-muted"
           >
-            <HighlightedText text={personal.summary} phrases={HIGHLIGHTS} />
+            {personal.heroIntro}
           </motion.p>
+
+          <motion.ul
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.14, ease: "easeOut" }}
+            className="mt-5 max-w-md space-y-3"
+          >
+            {personal.heroPoints.map((point) => (
+              <li key={point.label} className="flex gap-2.5 text-sm leading-relaxed">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span className="text-fg-muted">
+                  <strong className="font-semibold text-fg">{point.label}:</strong>{" "}
+                  {point.text}
+                </span>
+              </li>
+            ))}
+          </motion.ul>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
