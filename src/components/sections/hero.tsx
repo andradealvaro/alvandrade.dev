@@ -19,6 +19,8 @@ export function Hero() {
     typingSpeed: 35,
   });
   const role = useTypewriter({ words: ROLES, loop: true, pauseDuration: 1400 });
+  const [firstName, ...restName] = personal.name.split(" ");
+  const lastName = restName.join(" ");
 
   return (
     <section id="top" className="border-b border-border">
@@ -38,9 +40,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-fg md:text-6xl"
+            className="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl"
           >
-            {personal.name}
+            <span className="text-fg">{firstName} </span>
+            <span className="text-emerald-400">{lastName}</span>
           </motion.h1>
 
           <motion.p
@@ -102,7 +105,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="mx-auto"
+          className="relative mx-auto before:absolute before:-bottom-3 before:-right-3 before:-z-10 before:h-full before:w-full before:rounded-xl before:border before:border-slate-800 before:bg-slate-900/90"
         >
           <HeroTerminal />
         </motion.div>

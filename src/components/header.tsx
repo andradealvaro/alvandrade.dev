@@ -3,15 +3,20 @@
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 import { DownloadPdfButton } from "./download-pdf-button";
+import { useActiveSection } from "./use-active-section";
 
 const NAV_LINKS = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#experiencia", label: "Experiência" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#formacao", label: "Formação" },
+  { id: "sobre", href: "#sobre", label: "Sobre" },
+  { id: "experiencia", href: "#experiencia", label: "Experiência" },
+  { id: "projetos", href: "#projetos", label: "Projetos" },
+  { id: "formacao", href: "#formacao", label: "Formação" },
 ];
 
+const NAV_IDS = NAV_LINKS.map((link) => link.id);
+
 export function Header() {
+  const activeId = useActiveSection(NAV_IDS);
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
@@ -26,15 +31,22 @@ export function Header() {
         </a>
 
         <nav className="hidden items-center gap-6 md:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-fg-muted transition-colors hover:text-fg"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = link.id === activeId;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`font-mono text-xs uppercase tracking-wider transition-colors ${
+                  isActive
+                    ? "border-b-2 border-emerald-400 pb-1 text-emerald-400"
+                    : "text-slate-400 hover:text-slate-100"
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
