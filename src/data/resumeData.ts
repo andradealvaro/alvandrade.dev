@@ -36,11 +36,14 @@ export interface ProjectDetail {
 
 export interface Project {
   name: string;
+  slug: string;
   summary: string;
   problem: string;
   approach: string;
   stack: string[];
   details: ProjectDetail[];
+  language: string;
+  status: string;
   highlight?: boolean;
 }
 
@@ -50,7 +53,7 @@ export interface Language {
 }
 
 export const personal: PersonalInfo = {
-  name: "Álvaro Ferreira Andrade",
+  name: "Álvaro Andrade",
   title: "Engenharia de Computação · Desenvolvimento Full-Stack",
   location: "Petrópolis, RJ",
   email: "",
@@ -127,6 +130,9 @@ export const education: Education[] = [
 export const projects: Project[] = [
   {
     name: "Solidum NF — Gestão de Notas Fiscais",
+    slug: "solidum-nf",
+    language: "TypeScript",
+    status: "PRODUCTION_READY",
     summary:
       "Plataforma web para centralizar o recebimento, a extração de dados e o controle de aprovação de notas fiscais entre as obras e o escritório central da construtora.",
     problem:
@@ -144,6 +150,9 @@ export const projects: Project[] = [
   },
   {
     name: "Solidum Satisfação — Pesquisa de Clientes",
+    slug: "solidum-satisfacao",
+    language: "TypeScript",
+    status: "PRODUCTION_READY",
     summary:
       "SaaS de pesquisa de satisfação para substituir o uso de formulários genéricos, com questionário configurável e dashboard analítico para a diretoria.",
     problem:

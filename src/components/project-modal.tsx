@@ -38,24 +38,27 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-950/70 px-4 py-10 backdrop-blur-sm sm:items-center"
         >
           <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
             onClick={(event) => event.stopPropagation()}
-            className="w-full max-w-lg rounded-xl border border-border bg-panel shadow-2xl"
+            className="w-full max-w-lg overflow-hidden rounded-xl border border-border bg-panel shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-border px-6 py-4">
-              <p className="font-mono text-xs uppercase tracking-widest text-accent">
-                {">_"} arquitetura &amp; detalhes
-              </p>
+            <div className="flex items-center gap-1.5 border-b border-border bg-bg-subtle px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+              <span className="ml-2 font-mono text-[11px] text-fg-muted">
+                bash ~ ~/projects/{project?.slug}
+              </span>
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar"
-                className="flex h-7 w-7 items-center justify-center rounded-md text-fg-muted transition-colors hover:bg-bg-subtle hover:text-fg"
+                className="ml-auto flex h-6 w-6 items-center justify-center rounded-md text-fg-muted transition-colors hover:bg-bg hover:text-fg"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
             </div>
 

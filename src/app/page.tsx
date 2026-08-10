@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { SocialSidebar } from "@/components/social-sidebar";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <SocialSidebar />
       <main>
         <Hero />
         <About />

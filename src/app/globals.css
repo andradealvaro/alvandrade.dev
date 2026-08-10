@@ -65,16 +65,63 @@ body {
 }
 
 .bg-canvas-dots {
-  background-image: radial-gradient(var(--border) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(#94a3b8 1.4px, transparent 1.4px);
   background-size: 26px 26px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 60% 50% at 50% 0%,
-    #000 60%,
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 6%,
+    #000 92%,
     transparent 100%
   );
-  mask-image: radial-gradient(
-    ellipse 60% 50% at 50% 0%,
-    #000 60%,
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 6%,
+    #000 92%,
     transparent 100%
   );
+}
+
+:root[data-theme="dark"] .bg-canvas-dots {
+  background-image: radial-gradient(#475569 1.4px, transparent 1.4px);
+  opacity: 0.4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bg-canvas-dots {
+    background-image: radial-gradient(#475569 1.4px, transparent 1.4px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes scanline {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 28px;
+  }
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(52, 211, 153, 0.09) 0px,
+    rgba(52, 211, 153, 0.09) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  animation: scanline 1.1s linear infinite;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }

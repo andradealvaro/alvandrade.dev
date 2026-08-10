@@ -18,7 +18,8 @@ export function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-              className="grid grid-cols-1 gap-3 rounded-xl border border-transparent p-5 transition-colors hover:border-border md:grid-cols-[170px_1fr]"
+              whileHover={{ y: -3 }}
+              className="grid grid-cols-1 gap-3 rounded-xl border border-transparent p-5 transition-all duration-200 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 md:grid-cols-[170px_1fr]"
             >
               <div className="font-mono text-xs text-fg-muted">
                 <p className="font-medium text-accent">{job.period}</p>

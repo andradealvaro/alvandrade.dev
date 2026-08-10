@@ -34,8 +34,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-bg text-fg font-body">
-        <div aria-hidden className="fixed inset-0 -z-10 bg-canvas-dots" />
+      <body className="relative min-h-full flex flex-col bg-bg text-fg font-body">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-canvas-dots" />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

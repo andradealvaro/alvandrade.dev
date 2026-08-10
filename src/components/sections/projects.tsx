@@ -2,10 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Code2 } from "lucide-react";
+import { ArrowRight, Folder } from "lucide-react";
 import { projects, type Project } from "@/data/resumeData";
 import { ProjectModal } from "../project-modal";
 import { SectionHeading } from "./section-heading";
+
+const LANGUAGE_COLOR: Record<string, string> = {
+  TypeScript: "#3178c6",
+  JavaScript: "#f1e05a",
+  Python: "#3572a5",
+};
 
 export function Projects() {
   const [active, setActive] = useState<Project | null>(null);
@@ -23,11 +29,19 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-              whileHover={{ y: -4 }}
-              className="flex flex-col rounded-xl border border-border bg-panel/60 p-5 shadow-sm transition-shadow hover:shadow-lg hover:shadow-accent/5"
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="flex flex-col rounded-xl border border-border bg-panel/60 p-5 shadow-sm transition-all duration-200 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent">
-                <Code2 size={16} />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-fg-muted">
+                  <Folder size={16} />
+                  <span className="rounded bg-bg-subtle px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide">
+                    main
+                  </span>
+                </div>
+                <span className="rounded bg-accent-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-accent">
+                  {project.status}
+                </span>
               </div>
 
               <h3 className="mt-4 font-display text-base font-semibold text-fg">
@@ -48,14 +62,26 @@ export function Projects() {
                 ))}
               </div>
 
-              <button
-                type="button"
-                onClick={() => setActive(project)}
-                className="mt-5 inline-flex items-center gap-1.5 self-start font-mono text-xs font-medium text-accent"
-              >
-                Ver arquitetura &amp; detalhes
-                <ArrowRight size={13} />
-              </button>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-muted">
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{
+                      backgroundColor: LANGUAGE_COLOR[project.language] ?? "#8b949e",
+                    }}
+                  />
+                  {project.language}
+                </span>
+
+                <button
+                  type="button"
+                  onClick={() => setActive(project)}
+                  className="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-accent"
+                >
+                  Ver arquitetura &amp; detalhes
+                  <ArrowRight size={13} />
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>

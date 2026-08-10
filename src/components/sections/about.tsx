@@ -37,7 +37,7 @@ export function About() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
               whileHover={{ y: -4 }}
-              className="rounded-xl border border-border p-5 transition-colors hover:border-accent/50"
+              className="rounded-xl border border-border p-5 transition-all duration-200 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent">
                 <point.icon size={18} />
