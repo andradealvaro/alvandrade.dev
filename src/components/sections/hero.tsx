@@ -32,7 +32,7 @@ export function Hero() {
             <span className="blinking-cursor">▍</span>
           </p>
 
-          <p className="mb-2 h-4 font-mono text-xs text-fg-muted">
+          <p className="mb-4 h-4 font-mono text-xs text-fg-muted">
             {role.text}
             <span className="blinking-cursor">▍</span>
           </p>
