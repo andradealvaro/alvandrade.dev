@@ -3,32 +3,40 @@
 :root {
   --bg: #fafafa;
   --bg-subtle: #f1f1f0;
-  --fg: #16181d;
-  --fg-muted: #52525b;
+  --fg: #0b0d12;
+  --fg-muted: #55585f;
   --border: #e4e4e7;
-  --accent: #2f5fa8;
+  --accent: #2f5fff;
   --accent-fg: #ffffff;
+  --accent-ink: #0b1220;
+  --accent-soft: #e8edff;
+  --hero-ink: #0b1220;
+  --hero-ink-muted: rgba(11, 18, 32, 0.72);
 }
 
 :root[data-theme="dark"] {
-  --bg: #090d16;
-  --bg-subtle: #10141f;
-  --fg: #e6e8ec;
-  --fg-muted: #94a3b8;
-  --border: #1e293b;
-  --accent: #6f9bd6;
-  --accent-fg: #090d16;
+  --bg: #0a0d14;
+  --bg-subtle: #12161f;
+  --fg: #eef0f4;
+  --fg-muted: #9aa1ad;
+  --border: #232833;
+  --accent: #5b86ff;
+  --accent-fg: #0a0d14;
+  --accent-ink: #eef0f4;
+  --accent-soft: #16213f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #090d16;
-    --bg-subtle: #10141f;
-    --fg: #e6e8ec;
-    --fg-muted: #94a3b8;
-    --border: #1e293b;
-    --accent: #6f9bd6;
-    --accent-fg: #090d16;
+    --bg: #0a0d14;
+    --bg-subtle: #12161f;
+    --fg: #eef0f4;
+    --fg-muted: #9aa1ad;
+    --border: #232833;
+    --accent: #5b86ff;
+    --accent-fg: #0a0d14;
+    --accent-ink: #eef0f4;
+    --accent-soft: #16213f;
   }
 }
 
@@ -40,17 +48,21 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-hero-ink: var(--hero-ink);
+  --color-hero-ink-muted: var(--hero-ink-muted);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
 }
 
 .bg-dot-grid {
-  background-image: radial-gradient(var(--border) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }

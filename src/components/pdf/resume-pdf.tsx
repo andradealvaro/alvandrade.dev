@@ -8,52 +8,64 @@ import {
   languages,
 } from "@/data/resumeData";
 
-const INK = "#111318";
+const INK = "#0b1220";
 const MUTED = "#5b5f68";
-const LINE = "#d8dade";
-const ACCENT = "#2f5fa8";
+const ACCENT = "#2f5fff";
+const ACCENT_SOFT = "#e8edff";
+const ON_ACCENT = "#ffffff";
+const ON_ACCENT_MUTED = "#d7e0ff";
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 30,
-    paddingBottom: 30,
-    paddingHorizontal: 38,
     fontFamily: "Helvetica",
     fontSize: 8.8,
     color: INK,
     lineHeight: 1.35,
   },
+  headerBand: {
+    backgroundColor: ACCENT,
+    paddingHorizontal: 38,
+    paddingTop: 28,
+    paddingBottom: 22,
+  },
   name: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 17,
-    color: INK,
+    fontSize: 20,
+    lineHeight: 1.1,
+    color: ON_ACCENT,
   },
   title: {
-    fontSize: 9.5,
-    color: MUTED,
-    marginTop: 3,
+    fontSize: 9.8,
+    color: ON_ACCENT_MUTED,
+    marginTop: 9,
   },
   contactLine: {
-    marginTop: 7,
+    marginTop: 9,
     fontSize: 8,
-    color: MUTED,
+    color: ON_ACCENT_MUTED,
   },
-  headerDivider: {
-    borderBottomWidth: 1,
-    borderBottomColor: LINE,
-    marginTop: 10,
-    marginBottom: 11,
+  body: {
+    paddingHorizontal: 38,
+    paddingTop: 22,
+    paddingBottom: 30,
   },
-  sectionTitle: {
+  sectionTitlePill: {
+    alignSelf: "flex-start",
+    backgroundColor: ACCENT_SOFT,
+    borderRadius: 3,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    marginBottom: 8,
+  },
+  sectionTitleText: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 8.8,
+    fontSize: 7.6,
     color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 1,
-    marginBottom: 6,
   },
   section: {
-    marginBottom: 11,
+    marginBottom: 15,
   },
   paragraph: {
     fontSize: 8.8,
@@ -66,7 +78,7 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 9.3,
+    fontSize: 9.5,
     color: INK,
   },
   itemSubtitle: {
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
   bulletMark: {
     width: 8,
     fontSize: 8.4,
-    color: MUTED,
+    color: ACCENT,
   },
   bulletText: {
     flex: 1,
@@ -99,15 +111,19 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   entry: {
-    marginBottom: 8,
+    marginBottom: 10,
+    borderLeftWidth: 2,
+    borderLeftColor: ACCENT_SOFT,
+    paddingLeft: 10,
   },
   stackLine: {
     fontSize: 7.6,
+    fontFamily: "Helvetica-Bold",
     color: ACCENT,
-    marginTop: 4,
+    marginTop: 5,
   },
   skillRow: {
-    marginBottom: 5,
+    marginBottom: 6,
   },
   skillCategory: {
     fontFamily: "Helvetica-Bold",
@@ -120,7 +136,7 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   educationRow: {
-    marginBottom: 6,
+    marginBottom: 7,
   },
   languageRow: {
     flexDirection: "row",
@@ -129,6 +145,14 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
 });
+
+function SectionTitle({ children }: { children: string }) {
+  return (
+    <View style={styles.sectionTitlePill}>
+      <Text style={styles.sectionTitleText}>{children}</Text>
+    </View>
+  );
+}
 
 export function ResumePDF() {
   const contactParts = [
@@ -141,83 +165,86 @@ export function ResumePDF() {
   return (
     <Document title={`${personal.name} — Currículo`} author={personal.name}>
       <Page size="A4" style={styles.page}>
-        <View>
+        <View style={styles.headerBand}>
           <Text style={styles.name}>{personal.name}</Text>
           <Text style={styles.title}>{personal.title}</Text>
           <Text style={styles.contactLine}>{contactParts.join("   ·   ")}</Text>
         </View>
-        <View style={styles.headerDivider} />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Resumo</Text>
-          <Text style={styles.paragraph}>{personal.summary}</Text>
-        </View>
+        <View style={styles.body}>
+          <View style={styles.section}>
+            <SectionTitle>Resumo</SectionTitle>
+            <Text style={styles.paragraph}>{personal.summary}</Text>
+          </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Experiência</Text>
-          {experience.map((job) => (
-            <View key={job.company} style={styles.entry}>
-              <View style={styles.itemHeaderRow}>
-                <View>
-                  <Text style={styles.itemTitle}>{job.role}</Text>
-                  <Text style={styles.itemSubtitle}>{job.company}</Text>
+          <View style={styles.section}>
+            <SectionTitle>Experiência</SectionTitle>
+            {experience.map((job) => (
+              <View key={job.company} style={styles.entry}>
+                <View style={styles.itemHeaderRow}>
+                  <View>
+                    <Text style={styles.itemTitle}>{job.role}</Text>
+                    <Text style={styles.itemSubtitle}>{job.company}</Text>
+                  </View>
+                  <View>
+                    <Text style={styles.itemMeta}>{job.period}</Text>
+                    <Text style={styles.itemMeta}>{job.location}</Text>
+                  </View>
                 </View>
-                <View>
-                  <Text style={styles.itemMeta}>{job.period}</Text>
-                  <Text style={styles.itemMeta}>{job.location}</Text>
-                </View>
+                {job.bullets.map((bullet, index) => (
+                  <View key={index} style={styles.bulletRow}>
+                    <Text style={styles.bulletMark}>—</Text>
+                    <Text style={styles.bulletText}>{bullet}</Text>
+                  </View>
+                ))}
               </View>
-              {job.bullets.map((bullet, index) => (
-                <View key={index} style={styles.bulletRow}>
-                  <Text style={styles.bulletMark}>—</Text>
-                  <Text style={styles.bulletText}>{bullet}</Text>
-                </View>
-              ))}
-            </View>
-          ))}
-        </View>
+            ))}
+          </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Projetos</Text>
-          {projects.map((project) => (
-            <View key={project.name} style={styles.entry}>
-              <Text style={styles.itemTitle}>{project.name}</Text>
-              <Text style={styles.projectParagraph}>{project.summary}</Text>
-              <Text style={styles.projectParagraph}>{project.approach}</Text>
-              <Text style={styles.stackLine}>{project.stack.join("  ·  ")}</Text>
-            </View>
-          ))}
-        </View>
+          <View style={styles.section}>
+            <SectionTitle>Projetos</SectionTitle>
+            {projects.map((project) => (
+              <View key={project.name} style={styles.entry}>
+                <Text style={styles.itemTitle}>{project.name}</Text>
+                <Text style={styles.projectParagraph}>{project.summary}</Text>
+                <Text style={styles.projectParagraph}>{project.approach}</Text>
+                <Text style={styles.stackLine}>
+                  {project.stack.join("   ·   ")}
+                </Text>
+              </View>
+            ))}
+          </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Formação</Text>
-          {education.map((item) => (
-            <View key={item.institution} style={styles.educationRow}>
-              <Text style={styles.itemTitle}>{item.degree}</Text>
-              <Text style={styles.itemSubtitle}>{item.institution}</Text>
-              <Text style={styles.itemMeta}>{item.period}</Text>
-            </View>
-          ))}
-        </View>
+          <View style={styles.section}>
+            <SectionTitle>Formação</SectionTitle>
+            {education.map((item) => (
+              <View key={item.institution} style={styles.educationRow}>
+                <Text style={styles.itemTitle}>{item.degree}</Text>
+                <Text style={styles.itemSubtitle}>{item.institution}</Text>
+                <Text style={styles.itemMeta}>{item.period}</Text>
+              </View>
+            ))}
+          </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Idiomas</Text>
-          {languages.map((lang) => (
-            <View key={lang.name} style={styles.languageRow}>
-              <Text style={{ color: INK }}>{lang.name}</Text>
-              <Text style={{ color: MUTED }}>{lang.level}</Text>
-            </View>
-          ))}
-        </View>
+          <View style={styles.section}>
+            <SectionTitle>Idiomas</SectionTitle>
+            {languages.map((lang) => (
+              <View key={lang.name} style={styles.languageRow}>
+                <Text style={{ color: INK }}>{lang.name}</Text>
+                <Text style={{ color: MUTED }}>{lang.level}</Text>
+              </View>
+            ))}
+          </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Habilidades técnicas</Text>
-          {skills.map((group) => (
-            <View key={group.category} style={styles.skillRow}>
-              <Text style={styles.skillCategory}>{group.category}</Text>
-              <Text style={styles.skillItems}>{group.items.join(" · ")}</Text>
-            </View>
-          ))}
+          <View style={styles.section}>
+            <SectionTitle>Habilidades técnicas</SectionTitle>
+            {skills.map((group) => (
+              <View key={group.category} style={styles.skillRow}>
+                <Text style={styles.skillCategory}>{group.category}</Text>
+                <Text style={styles.skillItems}>{group.items.join(" · ")}</Text>
+              </View>
+            ))}
+          </View>
         </View>
       </Page>
     </Document>
