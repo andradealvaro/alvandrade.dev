@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Manrope } from "next/font/google";
+import { Space_Grotesk, Manrope, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { personal } from "@/data/resumeData";
 import "./globals.css";
@@ -16,6 +16,12 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700"],
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   title: `${personal.name} — ${personal.title}`,
   description: personal.summary,
@@ -25,10 +31,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${spaceGrotesk.variable} ${manrope.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-bg text-fg font-body">
+        <div aria-hidden className="fixed inset-0 -z-10 bg-canvas-dots" />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

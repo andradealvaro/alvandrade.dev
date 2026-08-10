@@ -25,7 +25,7 @@ export function Education() {
                   {item.degree}
                 </h3>
                 <p className="mt-1 text-sm text-fg-muted">{item.institution}</p>
-                <p className="mt-1 text-xs font-medium text-accent">
+                <p className="mt-1 font-mono text-xs font-medium text-accent">
                   {item.period}
                 </p>
               </motion.div>

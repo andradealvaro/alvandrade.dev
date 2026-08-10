@@ -15,8 +15,8 @@ export function SectionHeading({ eyebrow, title }: SectionHeadingProps) {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+      <p className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+        <span>■</span>
         {eyebrow}
       </p>
       <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-fg">

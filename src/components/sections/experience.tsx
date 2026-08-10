@@ -20,7 +20,7 @@ export function Experience() {
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
               className="grid grid-cols-1 gap-3 rounded-xl border border-transparent p-5 transition-colors hover:border-border md:grid-cols-[170px_1fr]"
             >
-              <div className="text-sm text-fg-muted">
+              <div className="font-mono text-xs text-fg-muted">
                 <p className="font-medium text-accent">{job.period}</p>
                 <p className="mt-1">{job.location}</p>
               </div>

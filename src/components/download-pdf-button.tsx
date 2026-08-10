@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Loader2 } from "lucide-react";
+import { ArrowRight, Download, Loader2 } from "lucide-react";
 import { personal } from "@/data/resumeData";
 
 interface DownloadPdfButtonProps {
@@ -56,6 +56,7 @@ export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProp
         <>
           <Download size={15} />
           Baixar currículo
+          {variant === "primary" && <ArrowRight size={15} />}
         </>
       )}
     </button>

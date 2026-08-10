@@ -8,12 +8,12 @@ import {
   languages,
 } from "@/data/resumeData";
 
-const INK = "#0b1220";
+const INK = "#0f172a";
 const MUTED = "#5b5f68";
-const ACCENT = "#2f5fff";
-const ACCENT_SOFT = "#e8edff";
+const ACCENT = "#059669";
+const ACCENT_SOFT = "#d1fae5";
 const ON_ACCENT = "#ffffff";
-const ON_ACCENT_MUTED = "#d7e0ff";
+const ON_ACCENT_MUTED = "#c8f5e2";
 
 const styles = StyleSheet.create({
   page: {
@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   itemMeta: {
-    fontSize: 8,
+    fontFamily: "Courier",
+    fontSize: 7.8,
     color: MUTED,
   },
   bulletRow: {
@@ -117,8 +118,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   stackLine: {
-    fontSize: 7.6,
-    fontFamily: "Helvetica-Bold",
+    fontSize: 7.4,
+    fontFamily: "Courier-Bold",
     color: ACCENT,
     marginTop: 5,
   },
@@ -131,7 +132,8 @@ const styles = StyleSheet.create({
     color: INK,
   },
   skillItems: {
-    fontSize: 8.2,
+    fontFamily: "Courier",
+    fontSize: 8,
     color: MUTED,
     marginTop: 1,
   },

@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer>
       <div className="mx-auto flex max-w-4xl flex-col items-start gap-6 px-6 py-16 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-fg-muted">
+        <p className="font-mono text-xs text-fg-muted">
           © {year} {personal.name}
         </p>
         <DownloadPdfButton variant="ghost" />
