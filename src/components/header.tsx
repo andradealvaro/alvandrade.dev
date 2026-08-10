@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 import { DownloadPdfButton } from "./download-pdf-button";
-import { personal } from "@/data/resumeData";
 
 const NAV_LINKS = [
   { href: "#sobre", label: "Sobre" },
@@ -22,7 +21,7 @@ export function Header() {
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="inline-block font-display text-sm font-semibold text-fg"
           >
-            {personal.name}
+            alv<span className="text-accent">.dev</span>
           </motion.span>
         </a>
 
