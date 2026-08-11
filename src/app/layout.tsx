@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Manrope, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { BootSequence } from "@/components/boot-sequence";
 import { personal } from "@/data/resumeData";
 import "./globals.css";
 
@@ -45,7 +46,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="relative min-h-full flex flex-col bg-bg text-fg font-body">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <BootSequence />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
