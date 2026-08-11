@@ -4,6 +4,9 @@ import { useState } from "react";
 import { ArrowRight, Download, Loader2 } from "lucide-react";
 import { personal } from "@/data/resumeData";
 
+// Temporariamente desativado para testes — reverter quando o download voltar a ser liberado.
+const DOWNLOAD_DISABLED = true;
+
 interface DownloadPdfButtonProps {
   variant?: "primary" | "ghost" | "invert";
 }
@@ -46,13 +49,18 @@ export function DownloadPdfButton({ variant = "primary" }: DownloadPdfButtonProp
     <button
       type="button"
       onClick={handleDownload}
-      disabled={loading}
+      disabled={loading || DOWNLOAD_DISABLED}
       className={VARIANT_CLASS[variant]}
     >
       {loading ? (
         <>
           <Loader2 size={15} className="animate-spin" />
           Gerando PDF
+        </>
+      ) : DOWNLOAD_DISABLED ? (
+        <>
+          <Download size={15} />
+          Indisponível no momento
         </>
       ) : variant === "invert" ? (
         <>
