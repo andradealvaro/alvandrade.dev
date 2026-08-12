@@ -5,6 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const BAR_LENGTH = 28;
 const DURATION_MS = 1700;
+const HOLD_MS = 350;
+
+// Exported so other above-the-fold components (Hero) can time their own
+// entrance to start exactly as this overlay begins fading away, instead of
+// finishing invisibly underneath it.
+export const BOOT_REVEAL_DELAY_MS = DURATION_MS + HOLD_MS;
 
 const CHECKPOINTS = [
   { at: 15, label: "loading kernel" },
@@ -31,7 +37,7 @@ export function BootSequence() {
       if (pct < 100) {
         frame = requestAnimationFrame(tick);
       } else {
-        setTimeout(() => setVisible(false), 350);
+        setTimeout(() => setVisible(false), HOLD_MS);
       }
     }
 

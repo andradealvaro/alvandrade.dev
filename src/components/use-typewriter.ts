@@ -8,6 +8,7 @@ interface UseTypewriterOptions {
   typingSpeed?: number;
   deletingSpeed?: number;
   pauseDuration?: number;
+  startDelayMs?: number;
 }
 
 export function useTypewriter({
@@ -16,14 +17,23 @@ export function useTypewriter({
   typingSpeed = 45,
   deletingSpeed = 28,
   pauseDuration = 1600,
+  startDelayMs = 0,
 }: UseTypewriterOptions) {
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
   const [done, setDone] = useState(false);
+  const [started, setStarted] = useState(startDelayMs === 0);
 
   useEffect(() => {
-    if (done) return;
+    if (startDelayMs === 0) return;
+    const timeout = setTimeout(() => setStarted(true), startDelayMs);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only ever run once, on mount
+  }, []);
+
+  useEffect(() => {
+    if (done || !started) return;
 
     const current = words[wordIndex % words.length];
     const atWordEnd = text === current;
@@ -60,7 +70,18 @@ export function useTypewriter({
     );
 
     return () => clearTimeout(timeout);
-  }, [text, deleting, wordIndex, words, loop, typingSpeed, deletingSpeed, pauseDuration, done]);
+  }, [
+    text,
+    deleting,
+    wordIndex,
+    words,
+    loop,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+    done,
+    started,
+  ]);
 
   return { text, done };
 }
