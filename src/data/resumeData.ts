@@ -183,6 +183,26 @@ export const projects: Project[] = [
     ],
     highlight: true,
   },
+  {
+    name: "Solidum Hub — Intranet Corporativa",
+    slug: "solidum-hub",
+    language: "TypeScript",
+    status: "PRODUCTION_READY",
+    summary:
+      "Portal interno da construtora reunindo chamados, colaboradores, obras, documentos, novidades e acesso aos demais sistemas em um único ponto de entrada, com autenticação restrita a e-mails corporativos.",
+    problem:
+      "Informação institucional e fluxos internos (abertura de chamado, organograma, comunicados, manuais) estavam espalhados entre e-mail, planilhas e conversas avulsas, sem um lugar único de acesso nem controle de quem viu o quê.",
+    approach:
+      "Autenticação isolada em banco próprio (Neon), separada de qualquer outro sistema da empresa, restrita a domínio corporativo. Áreas de administração e permissões seguem a mesma lógica de papéis dos demais sistemas. Presença de colaboradores, organograma, busca em documentos e trilha de auditoria são dados reais do próprio banco, sem métricas fabricadas. Backup diário automatizado para SharePoint e suíte de testes end-to-end cobrindo os fluxos críticos.",
+    stack: ["Next.js", "TypeScript", "Neon (Postgres)", "Drizzle ORM", "Tailwind CSS", "Playwright"],
+    details: [
+      { label: "Autenticação", value: "Neon Auth com restrição de domínio corporativo, isolada do banco dos demais sistemas" },
+      { label: "Administração", value: "Área de admin com grade de permissões por papel, à parte da autenticação padrão do provedor" },
+      { label: "Observabilidade", value: "Auditoria de ações, presença de colaboradores e organograma como dado real, sem número inventado" },
+      { label: "Continuidade", value: "Backup diário automatizado para SharePoint e testes end-to-end (Playwright) cobrindo os fluxos críticos" },
+    ],
+    highlight: false,
+  },
 ];
 
 export const languages: Language[] = [
